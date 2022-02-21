@@ -4,7 +4,7 @@ FROM openjdk:8u312-jdk-buster
 
 LABEL version="1.0.3"
 
-RUN apt-get update && apt-get install -y curl && \
+RUN apt-get update && apt-get install -y curl dos2unix && \
  addgroup minecraft && \
  adduser --home /data --ingroup minecraft --disabled-password minecraft
 
