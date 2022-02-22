@@ -40,5 +40,5 @@ example:
 `OPS="OpPlayer1,OpPlayer2"`
 
 ## Source
-Github: https://github.com/Ratomas/cave_factory
-Docker: https://hub.docker.com/r/ratomas/cave_factory
+Github: https://github.com/Ratomas/cave-factory
+Docker: https://hub.docker.com/r/ratomas/cave-factory
