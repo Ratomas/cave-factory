@@ -1,5 +1,9 @@
 // priority: 0
 
+onEvent("tags.items", (event) => {
+  event.add("cave_factory:welders", "twilightforest:lamp_of_cinders");
+});
+
 onEvent("recipes", (event) => {
   event.remove({ output: "botania:cocoon" });
   event.remove({ output: "create:mechanical_crafter" });
@@ -60,7 +64,7 @@ onEvent("recipes", (event) => {
     }
   );
   event.shaped(
-    Item.of("tconstruct:creative_slot", '{slot:"armor"}'),
+    Item.of("tconstruct:creative_slot", '{slot:"defense"}'),
     ["EEE", "EDE", "EEE"],
     {
       D: "minecraft:diamond_chestplate",
@@ -240,7 +244,7 @@ onEvent("recipes", (event) => {
   event.stonecutting("4x tconstruct:seared_brick", "tconstruct:seared_stone");
 
   event.recipes.create
-    .sequenced_assembly(
+    .sequencedAssembly(
       [
         Item.of("rftoolsbase:machine_frame").withChance(100.0),
         Item.of("twilightforest:lamp_of_cinders").withChance(1.0),
@@ -258,9 +262,9 @@ onEvent("recipes", (event) => {
           "create:brass_casing",
           "minecraft:iron_block",
         ]),
-        event.recipes.create.deploying("twilightforest:lamp_of_cinders", [
+        event.recipes.create.deploying("#cave_factory:welders", [
           "create:brass_casing",
-          "twilightforest:lamp_of_cinders",
+          "#cave_factory:welders",
         ]),
       ]
     )

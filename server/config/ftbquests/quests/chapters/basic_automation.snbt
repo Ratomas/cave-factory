@@ -224,6 +224,7 @@
 								level: 3s
 							}
 						]
+						HideFlags: 3
 						tic_materials: [
 							"tconstruct:stone"
 							"tconstruct:stone"
@@ -248,7 +249,16 @@
 			title: "Getting wood is... different here"
 			x: -18.5d
 			y: -1.0d
-			description: ["To get wood throw cobblestone on the ground and wait around 30 seconds"]
+			description: [
+				"To get wood throw cobblestone on the ground and wait around 30 seconds"
+				""
+				"Cobble gives oak logs"
+				"Scoria cobble gives spruce logs"
+				"Gabbro cobble gives acacia logs"
+				"Granite cobble gives jungle logs"
+				"Dark scoria cobble gives dark oak logs"
+				"Diorite cobblestone gives birch logs"
+			]
 			dependencies: ["761DBA619422B898"]
 			id: "674C4BAB321F86BF"
 			tasks: [{

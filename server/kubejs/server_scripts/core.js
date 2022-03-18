@@ -5,14 +5,6 @@ settings.logRemovedRecipes = false;
 settings.logSkippedRecipes = false;
 settings.logErroringRecipes = true;
 
-const logsPool = [
-  "minecraft:oak_log",
-  // "minecraft:spruce_log",
-  // "minecraft:acacia_log",
-  // "minecraft:birch_log",
-  // "minecraft:jungle_log",
-  // "minecraft:dark_oak_log",
-];
 const seedsPool = [
   "minecraft:wheat_seeds",
   "minecraft:carrot",
@@ -34,7 +26,27 @@ const mobDropsPool = [
   "minecraft:slime_ball",
 ];
 const exchangeMap = {
-  "minecraft:cobblestone": { pool: logsPool, delay: 30 * 20 },
+  "minecraft:cobblestone": { pool: ["minecraft:oak_log"], delay: 30 * 20 },
+  "create:diorite_cobblestone": {
+    pool: ["minecraft:birch_log"],
+    delay: 30 * 20,
+  },
+  "create:scoria_cobblestone": {
+    pool: ["minecraft:spruce_log"],
+    delay: 30 * 20,
+  },
+  "create:gabbro_cobblestone": {
+    pool: ["minecraft:acacia_log"],
+    delay: 30 * 20,
+  },
+  "create:granite_cobblestone": {
+    pool: ["minecraft:jungle_log"],
+    delay: 30 * 20,
+  },
+  "create:dark_scoria_cobblestone": {
+    pool: ["minecraft:dark_oak_log"],
+    delay: 30 * 20,
+  },
   "minecraft:dirt": { pool: seedsPool, delay: 15 * 20 },
   "minecraft:rotten_flesh": { pool: mobDropsPool, delay: 30 * 20 },
 };
@@ -86,7 +98,7 @@ onEvent("block.right_click", (event) => {
   const { block, hand, item, world, player } = event;
   if (hand.name() != "MAIN_HAND") return;
 
-  if (item.toString() == "item.empty" && player.isCrouching()) {
+  if (item.toString() == "Item.empty" && player.isCrouching()) {
     if (block.equals("minecraft:stone")) {
       const entity = world.createEntity("item");
       entity.item = "botania:pebble";
@@ -169,7 +181,7 @@ onEvent("block.loot_tables", (event) => {
         weight: cobbleDrops[name],
       })),
     };
-    table.pool((pool) => {
+    table.addPool((pool) => {
       pool.rolls = 1;
       pool.survivesExplosion();
       pool.addEntry({
@@ -177,7 +189,7 @@ onEvent("block.loot_tables", (event) => {
         children: [stonePool, cobblePool],
       });
     });
-    table.pool((pool) => {
+    table.addPool((pool) => {
       pool.rolls = 1;
       pool.survivesExplosion();
       Object.keys(oreDrops).forEach((name) => {
